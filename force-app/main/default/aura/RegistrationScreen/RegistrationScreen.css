@@ -1,0 +1,16 @@
+.THIS {
+}
+
+.THIS .mypop {
+    background-color: white;
+    width:435px;
+}
+
+.THIS.main{
+    position:absolute;
+    top: 20%;  
+    left:30%;
+    background-color: #27301d;
+    width:530px;
+    height:400px;
+}

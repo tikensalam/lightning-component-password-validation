@@ -1,0 +1,19 @@
+<aura:component >
+    <aura:attribute name = "iconCheck" type="Boolean" />
+    <aura:attribute name = "fontColorValue" type="string" default="slds-text-color_error" />
+    <aura:handler name="change" value="{!v.iconCheck}" action="{!c.handleFontColor}" />
+    <aura:attribute name= "policyText" type="String" />
+                <div id="upper" class="slds-media slds-media_center">
+                    <div class="slds-media__figure slds-p-left_medium">
+                        <aura:if isTrue="{!v.iconCheck}">
+                        	<lightning:icon iconName="utility:check" size="xx-small"/>
+                        	<aura:set attribute="else">
+                                <lightning:icon iconName="utility:close" size="xx-small"/>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div class="slds-media__body">
+                        <span class="{!v.fontColorValue}"><strong>{!v.policyText}</strong></span>
+                    </div>
+                </div>
+</aura:component>

@@ -1,0 +1,55 @@
+<aura:component implements="flexipage:availableForRecordHome,force:appHostable,force:hasRecordId" access="global" >
+
+    <aura:attribute name="displayDiv" type="Boolean" default="false"/>
+    <aura:attribute name="checkUpper" type="Boolean" default="false"/>
+    <aura:attribute name="checkLower" type="Boolean" default="false"/>
+    <aura:attribute name="checkSpecial" type="Boolean" default="false"/>
+    <aura:attribute name="checkNumber" type="Boolean" default="false"/>
+    <aura:attribute name="checkLength" type="Boolean" default="false"/>
+    
+    <div class="main slds-card">
+        <div style="position:absolute;top:20%;left:15%;">
+            <lightning:input aura:id="textUsername" 
+                             type="text"
+                             placeholder="Username"
+                             class="slds-size_medium slds-p-left_xx-large" />
+             
+            <lightning:input aura:id="textPwd" 
+                             type="password"
+                             placeholder="Password"
+                             class="slds-size_medium slds-p-left_xx-large" 
+                             onfocus="{!c.showPwdPolicy}" 
+                             onblur="{!c.hidePwdPolicy}" 
+                             onchange="{!c.validatePwdPolicy}"/>
+            
+            <aura:if isTrue="{!v.displayDiv}">
+                <div class = "slds-p-top_small" >
+                    <div class="mypop slds-popover slds-nubbin_top">
+                        <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close" title="Close dialog">
+                            <lightning:icon iconName="utility:close" size="xx-small"/>	
+                        </button>
+                        <header class="slds-popover__header slds-theme_shade slds-theme_alert-textur">
+   							<h2 class="slds-text-heading_small" id="dialog-heading-id-589">
+                                 <strong>Password policy</strong>
+                            </h2>
+ 						</header>
+                        <div class="slds-popover__body" id="dialog-body-id-196">
+                            <c:DisplayPolicy iconCheck="{!v.checkUpper}" policyText="Should contain atleast one upper case letter" />
+                            <c:DisplayPolicy iconCheck="{!v.checkLower}" policyText="Should contain atleast one lower case letter" />
+                            <c:DisplayPolicy iconCheck="{!v.checkSpecial}" policyText="Should contain atleast one special character(!@#$%^&amp;*)" />
+                            <c:DisplayPolicy iconCheck="{!v.checkNumber}" policyText="Should contain atleast one number" />
+                            <c:DisplayPolicy iconCheck="{!v.checkLength}" policyText="Should be more than 8 characters" />
+                        </div>
+                    </div>
+                </div>
+        	</aura:if>
+            
+            <lightning:input aura:id="textConfirmPwd" 
+                             type="password"
+                             placeholder="Retype password..."
+                             class="slds-size_medium slds-p-left_xx-large"
+                             onblur="{!c.handleConfirmPassword}"/>
+		</div>
+    </div>
+    
+</aura:component>
